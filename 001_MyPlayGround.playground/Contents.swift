@@ -83,6 +83,8 @@ print(greet(expression: "Hello", person: "Mike"))
 print(greet2("Hello", to: "Mike"))
 
 // ------ クロージャ（関数閉包） ------
+// 自分を囲むスコープにある変数を参照する関数（なので、厳密にはincrement()がクロージャになる。
+// グローバル変数を減らしたいときや、関数の実行結果をそのまま使い回したい時に使える
 func incrementer() -> ( ()-> Int ) {
     var count = 0
     func increment() -> Int {
@@ -90,4 +92,19 @@ func incrementer() -> ( ()-> Int ) {
         return count
     }
     return increment
+}
+
+var counter = incrementer()
+for i in 0..<20 {
+    print(" \(i)回目counter: \(counter())")
+}
+
+// 無名関数も可能
+func incrementerAnonymous() -> (() -> Int) {
+    var count = 0
+    return {
+        () -> Int in
+        count += 1
+        return count
+    }
 }
