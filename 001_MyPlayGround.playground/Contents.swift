@@ -108,3 +108,64 @@ func incrementerAnonymous() -> (() -> Int) {
         return count
     }
 }
+
+var counter2 = incrementerAnonymous()
+for i in 0..<10 {
+    print("\(i)回目のcounter2: \(counter2())")
+}
+
+
+// ------ クラス ------
+class MyApp {
+    // Shapeクラスの定義
+    class Shape {
+        var name: String
+        // イニシャライザ（コンストラクタ）
+        init(name: String) {
+            self.name = name
+        }
+    }
+    
+    class Rectangle: Shape {
+        var width: Double
+        var height: Double
+        
+        init (name: String, width: Double, height: Double) {
+            self.width = width
+            self.height = height
+            
+            // スーパクラスのイニシャライザ呼び出し
+            super.init(name: name)
+        }
+        
+        func area() -> Double {
+            return width * height
+        }
+    }
+    class Triangle: Shape {
+        var bottom: Double
+        var height: Double
+        
+        init (name: String, bottom: Double, height: Double) {
+            self.bottom = bottom
+            self.height = height
+            
+            // スーパクラスのイニシャライザ呼び出し
+            super.init(name: name)
+        }
+        
+        func area() -> Double {
+            return bottom * height / 2.0
+        }
+    }
+}
+
+// 四角形の作成
+var square = MyApp.Rectangle(name: "私の四角形", width: 7.5, height: 7.5)
+print(square.name)
+print(square.area())
+
+// 三角形の作成
+var triangle = MyApp.Triangle(name: "私の三角形", bottom: 10, height: 8)
+print(triangle.name)
+print(triangle.area())
