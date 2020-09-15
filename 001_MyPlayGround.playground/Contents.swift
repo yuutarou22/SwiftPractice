@@ -169,3 +169,9 @@ print(square.area())
 var triangle = MyApp.Triangle(name: "私の三角形", bottom: 10, height: 8)
 print(triangle.name)
 print(triangle.area())
+
+
+// ------ Optional型 ------
+// nilを許容する変数は、Optional型として定義する必要がある
+// KotlinでいうNullableみたいな感じ
+
