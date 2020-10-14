@@ -173,5 +173,22 @@ print(triangle.area())
 
 // ------ Optional型 ------
 // nilを許容する変数は、Optional型として定義する必要がある
+// に非Optional型のIntやStringには、nilは代入できない
+// ちなみに、「Int」と「Int?」は全く異なる型になる。
 // KotlinでいうNullableみたいな感じ
+
+// Optional Int
+var optionalInt: Int? = 5
+// 通常のInt
+var int: Int = 5
+
+// Optional String
+var optionalString: String? = "hello"
+// 通常のString
+var string: String = "hello"
+
+// Optional にnilを代入
+optionalString = nil
+optionalInt = nil
+
 
