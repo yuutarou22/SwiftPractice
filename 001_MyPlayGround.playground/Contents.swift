@@ -191,4 +191,41 @@ var string: String = "hello"
 optionalString = nil
 optionalInt = nil
 
+// Optional型のシンタックスシュガー（使いやすくしたやつ）
+var optionalIntSuger: Optional<Int> = 5
+var optionalStringSuger: Optional<String> = "hello"
 
+
+// ------ Optional型をアンラップする ------
+// SwiftではOptional型を「ラップされている」と表現する。
+// nilを許容する→包む→ラップ
+// 逆に、値を使うためにはアンラップする必要がある。
+// アンラップ処理には4種類ある。
+
+// ① Optional Binding
+// ifやguardを使って、nilの判定をする。
+// ※guardは関数内でしか使えない
+func hello() -> String {
+    let optionalStr: String? = "hello"
+    if let unwrappedStr = optionalStr {
+        return unwrappedStr.uppercased()
+    }
+    return ""
+}
+func helloWithGuard() -> String {
+    let optionalStr: String? = "hello"
+    guard let unwrappedStr = optionalStr else { return "" }
+    return unwrappedStr.uppercased()
+}
+
+print(helloWithGuard())
+
+// ② Optional Chaining
+
+
+
+// ③ Forced Unwrapping
+
+
+
+// ④ Implicitly Unwrapped Optional
